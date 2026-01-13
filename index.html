@@ -56,7 +56,7 @@ S
             <span class="author-block">
               Chenxi Zhang<sup>1,2</sup> </a>,</span>
                         <span class="author-block">
-              Ziliang Gan<sup>1</sup></a>, Liyun Zhu<sup>1</sup>, Youwei Pang<sup>3</sup>,  Qing Zhang<sup>2</sup>, Rongjunchen Zhang<sup>1</sup> 
+              Ziliang Gan<sup>1</sup></a>, Liyun Zhu<sup>1</sup>, Youwei Pang<sup>3</sup>,  Qing Zhang<sup>4</sup>, Rongjunchen Zhang<sup>1</sup> 
              </a>
             </span>
             <br>
@@ -66,7 +66,7 @@ S
                     </div>
                     <div class="is-size-5 publication-authors" style="margin-top: 10px;">
                         <span class="author-block">
-                            <sup>1</sup>Hithink Research, <sup>2</sup>Shanghai Institute of technology, <sup>3</sup>Nanyang Technological University,
+                            <sup>1</sup>Hithink Research, <sup>2</sup>Wuhan University, <sup>3</sup>Nanyang Technological University, <sup>4</sup>Shanghai Institute of Technology ,
                         </span>
 
                     </div>
@@ -80,20 +80,20 @@ S
       <span class="link-block"> <a href=""
            class="external-link button is-normal is-rounded is-dark"> <span class="icon"> <i class="ai ai-arxiv"></i> </span> <span>arXiv</span> </a> </span>
       <!-- Code Link. -->
-      <span class="link-block"> <a href="https://github.com/hithink-ai/MME-Finance"
+      <span class="link-block"> <a href="https://github.com/HiThink-Research/FinMTM"
            class="external-link button is-normal is-rounded is-dark"> <span class="icon"> <i class="fab fa-github"></i> </span> <span>Code</span> </a> </span>
       <!-- HuggingFace Link. -->
-      <span class="link-block"> <a href="https://huggingface.co/datasets/hithink-ai/MME-Finance"
+      <span class="link-block"> <a href="https://huggingface.co/datasets/hithink-ai/FinMTM"
            class="external-link button is-normal is-rounded is-dark"><span class="icon">🤗</span><span>Space</span> </a></span>
   
     </div>
 
-      <figure class="image is-inline-block" style="max-width: 1620px; margin-top: 14px;">
+      <figure class="image is-inline-block" style="max-width: 1620px; margin-top: 14px; padding-left: 300px;">
         <img src="./static/images/Columnar.png"
              alt="Teaser"
              loading="lazy"
              decoding="async"
-             style="width: 100%; height: auto; display: block;">
+             style="width: 80%; height: auto; display: block;">
       </figure>
       </div>
 
@@ -110,9 +110,9 @@ S
                     <p>
                         The financial domain poses substantial challenges for vision-language models (VLMs) due to specialized chart formats and knowledge-intensive reasoning requirements. 
 However, existing financial benchmarks are largely single-turn and rely on a narrow set of question formats, limiting comprehensive evaluation in realistic application scenarios.
-To address this gap, we propose \benchmarkname, a multi-turn multimodal benchmark that expands diversity along both data and task dimensions. 
+To address this gap, we propose FinMTM, a multi-turn multimodal benchmark that expands diversity along both data and task dimensions. 
 On the data side, we curate and annotate 11{,}133 bilingual (Chinese and English) financial QA pairs grounded in financial visuals, including candlestick charts, statistical plots, and report figures.
-On the task side, \benchmarkname~ covers single- and multiple-choice questions, multi-turn open-ended dialogues, and agent-based tasks.
+On the task side, FinMTM covers single- and multiple-choice questions, multi-turn open-ended dialogues, and agent-based tasks.
 We further design task-specific evaluation protocols, including a set-overlap scoring rule for multiple-choice questions, a weighted combination of turn-level and session-level scores for multi-turn dialogues, and a composite metric that integrates planning quality with final outcomes for agent tasks.
 Extensive experimental evaluation of 22 VLMs reveal their limitations in fine-grained visual perception, long-context reasoning, and complex agent workflows.</p>
                 </div>
@@ -168,7 +168,7 @@ Extensive experimental evaluation of 22 VLMs reveal their limitations in fine-gr
                         <p>
                             FinMTM employs a rigorous evaluation framework tailored to specific task types. For objective questions, it utilizes a deterministic protocol with a strict overselection rule where any incorrect selection results in a zero score while partial credit is assigned proportionally for correct answers. Open-ended multi-turn dialogues are assessed using a dual-rule strategy that evaluates turn-level capabilities across five dimensions including visual precision, financial logic, data accuracy, cross-modal verification, and temporal awareness combined with session-level checklist verification. Financial agent tasks are measured through a two-stage trajectory-based framework consisting of a planning stage that quantifies tool usage quality via an F<sub>&beta;</sub> score based on functional alignment and a summarization stage evaluating reasoning quality (Q<sup>r</sup>) and answer correctness (Q<sup>a</sup>). To ensure high reliability and industry authority, the benchmark implements a multi-model cross-evaluation protocol using LLM judges like GPT-5 and Gemini-3 Pro which is further validated by hierarchical audits from a team of fifteen senior financial experts.
                           </p>
-                    <img class="columns is-centered has-text-centered" src="./static/images/115d351c-38a5-4c9d-a660-4ca5654b20cd.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/eval.png" alt="Teaser" width="95%"
                         style="margin:0 auto">
                     <br>
                     <figcaption>
@@ -183,21 +183,9 @@ Extensive experimental evaluation of 22 VLMs reveal their limitations in fine-gr
 The objective questions include 1,982 single-choice and 1,982 multiple-choice questions, assessing a model’s basic understanding of financial multimodal information under clearly defined constraints. Open-ended questions contain 6,169 samples, with an average of 4.25 interaction rounds per sample and 4,963 average input tokens.
 Finally, the financial agent task includes 1,000 samples, all requiring external financial tools. About 73\% of the tasks can be completed using a single tool across multiple calls, while the remaining 27\% require multiple tools. This setting reflects realistic financial analysis and decision-making workflows.
                         </p>
-                        <div class="columns is-centered is-multiline">
-                            <div class="column is-half">
-                              <figure class="image">
-                                <img src="./static/images/static1.png" alt="Overall Performance Radar Chart" style="width: 100%; margin: 0 auto;">
-                                <p class="has-text-centered">Figure 1: Overall performance across different dimensions.</p>
-                              </figure>
-                            </div>
-                          
-                            <div class="column is-half">
-                              <figure class="image">
-                                <img src="./static/images/static2.png" alt="Dataset Statistics" style="width: 100%; margin: 0 auto;">
-                                <p class="has-text-centered">Figure 2: Statistics of FinMTM of multi-turn open-ended questions.</p>
-                              </figure>
-                            </div>
-                          </div>
+                   
+                          <img class="columns is-centered has-text-centered" src="./static/images/static.png" alt="Teaser" width="95%"
+                          style="margin:0 auto">
                     <br>
                     <figcaption>
                         <p style="text-align: center; color: #061E61;">
